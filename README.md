@@ -10,13 +10,16 @@ This repo contains one R script, "run_analysis.R", that does the following.
     5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 Data Source
+
     The original data files used in the analysis can be downloaded from:
         https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
     
     The files should be unzipped to the user's current working directory.
 
 Required R packages
+
     The "reshape2" package is required to run the script.
 
 Final Output
+
     Running the script results in the final tidy data set of aggregated means and std variables saved in the file "Wk4_tidy_data.txt".  The script saves the file in the user's current working directory.
