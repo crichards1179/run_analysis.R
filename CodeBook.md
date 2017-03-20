@@ -1,7 +1,9 @@
 The data used in this analysis represent data collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained:
 
   http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-  
+
+From the author's website:
+
 Abstract: Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.
 	
 Data Set Information:
