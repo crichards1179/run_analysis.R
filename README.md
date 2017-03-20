@@ -23,3 +23,6 @@ Required R packages
 Final Output
 
     Running the script results in the final tidy data set of aggregated means and std variables saved in the file "Wk4_tidy_data.txt".  The script saves the file in the user's current working directory.
+
+
+Please refer to the CodeBook.md file for information on the steps taken during the analysis.
