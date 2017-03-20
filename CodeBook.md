@@ -17,7 +17,6 @@ The data analysis is performed by extracting the raw data files into the user's 
 		X_train.txt
 		y_train.txt
 		subject_train.txt
-	
 	2. Combines the data tables according to table dimensions using rbind and cbind.
 	3. Merges descriptive labels found in the "features" and "activity_labels" tables.
 	4. Extracts the columns containing "mean" and "std" in their column names to form a smaller data set for further analysis.
