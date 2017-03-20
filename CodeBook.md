@@ -7,6 +7,7 @@ The data used in this analysis represent data collected from the accelerometers 
   https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
   
 The data analysis is performed by extracting the raw data files into the user's current working directory.  Running the run_anlysis.R script will perform the following transformations on the data files:
+
 	1. Loads the necessary data files from the working directory.  Those files are:
 		features.txt
 		activity_labels.txt
@@ -16,6 +17,7 @@ The data analysis is performed by extracting the raw data files into the user's 
 		X_train.txt
 		y_train.txt
 		subject_train.txt
+	
 	2. Combines the data tables according to table dimensions using rbind and cbind.
 	3. Merges descriptive labels found in the "features" and "activity_labels" tables.
 	4. Extracts the columns containing "mean" and "std" in their column names to form a smaller data set for further analysis.
