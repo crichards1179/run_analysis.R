@@ -15,21 +15,22 @@ trainy <- read.table("./UCI HAR Dataset/train/y_train.txt")
 trainsubject <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 
 #------------------------------------------------------------------------
-# Combine data tables 
+# Combine data tables.  Rename column to "subject".
 #------------------------------------------------------------------------
 #Combine subject data
 sub <- rbind(testsubject, trainsubject)
 colnames(sub) <- "subject"
 
-# Combine testy & trainy data with rbind.  Merge activity labels.
+# Combine testy & trainy data with rbind.  
+#Merge activity descriptions from 2nd column of activity labels with column in datlabel.
 datlabel <- rbind(testy, trainy)
 datlabel <- merge(datlabel, activitylabels, by=1)[,2]
 
-# Combine testx & trainx data with rbind
+# Combine testx & trainx data with rbind.  Replace 
 dat <- rbind(testx, trainx)
 colnames(dat) <- features[,2]
 
-# Final combine -  combine columns of all three sets
+# Final combine -  combine columns of all three sets (x, y and subject)
 datamerged2 <- cbind(sub, datlabel, dat)
 
 #------------------------------------------------------------------------
@@ -37,20 +38,27 @@ datamerged2 <- cbind(sub, datlabel, dat)
 #------------------------------------------------------------------------
 #searchterms <- c("-mean", "-std")
 #targets <- grep(searchterms, colnames(datamerged))
-targets <- grep("-mean|-std", colnames(datamerged), value = FALSE )
+targets <- grep("mean|std", colnames(datamerged), value = FALSE )
 
-#------------------------------------------------------------------------
+#------------------------------------------------------------------------------------
 # Subset first and second columns and only "mean" and "std" columns from merged data
-#------------------------------------------------------------------------
+#------------------------------------------------------------------------------------
 stdmeans <- datamerged[, c(1,2, targets)]
 
-#------------------------------------------------------------------------
-# Create molten data set from stdmeans.
-#------------------------------------------------------------------------
+#---------------------------------------------------------------------------------
+# Create molten data set from stdmeans.  ID variable are "subject" and "datlabel".
+# Other columns are measured variables and are handled by default.
+#---------------------------------------------------------------------------------
 melteddata = melt(stdmeans, id.var = c("subject", "datlabel"))
 
 #------------------------------------------------------------------------
-# Reshape molten data using dcast.  Aggregate data using means function.
+# Reshape molten data using dcast.  Subject and datalabel columns form a 
+# "composite key".  The measured variable data are the remaining columns.
+# Data is aggregated using the means function.
 #------------------------------------------------------------------------
 finalmeans = dcast(melteddata , subject + datlabel ~ variable, mean)
 
+#------------------------------------------------------------------------
+# Save the tidy data using write.table
+#------------------------------------------------------------------------
+write.table(finalmeans, file = "Wk4_tidy_data.txt")
